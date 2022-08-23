@@ -1,13 +1,27 @@
 import Link from 'next/link';
+import SignOut from './SignOut';
+import NavStyles from './styles/NavStyles';
+import { useUser } from './User';
 
 export default function Nav() {
+  const user = useUser();
   return (
-    <nav>
-      <Link href="products">Shop</Link>
-      <Link href="sell">Sell</Link>
-      <Link href="orders">Orders</Link>
-      <Link href="account">Account</Link>
-      {/* <Link href="index.js">Cart</Link> */}
-    </nav>
+    <NavStyles>
+      <Link href="/products">Shop</Link>
+      {user && (
+        <>
+          <Link href="/sell">Sell</Link>
+          <Link href="/orders">Orders</Link>
+          <Link href="/account">Account</Link>
+          <SignOut />
+        </>
+      )}
+
+      {!user && (
+        <>
+          <Link href="/signin">Sign In</Link>
+        </>
+      )}
+    </NavStyles>
   );
 }

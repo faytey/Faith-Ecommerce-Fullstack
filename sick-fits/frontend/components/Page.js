@@ -21,6 +21,7 @@ const GlobalStyles = createGlobalStyle`
     --offWhite: #ededed;
     --maxWidth: 1000px;
     --bs: '0 1rem 2rem 0 rgba(0,0,0,0.09)';
+    font-size: 62.5%;
     box-sizing: border-box;
   }
 
