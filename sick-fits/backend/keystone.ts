@@ -9,7 +9,9 @@ import {
 import { User } from './schemas/User';
 import { Product } from './schemas/Products';
 import { ProductImage } from './schemas/ProductImage';
+import { CartItem } from './schemas/CartItem';
 import { insertSeedData } from './seed-data';
+import { sendPasswordResetEmail } from './lib/mail';
 
 const databaseURL =
   process.env.DATABASE_URL || 'mongodb://localhost/keystone-sick-fits-tutorial';
@@ -28,7 +30,7 @@ const { withAuth } = createAuth({
   },
   passwordResetLink: {
     async sendToken(args) {
-      console.log(args);
+      await sendPasswordResetEmail(args.token, args.identity);
     },
   },
 });
@@ -55,13 +57,14 @@ export default withAuth(
       User,
       Product,
       ProductImage,
+      CartItem,
     }),
     ui: {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-member-access
       isAccessAllowed: ({ session }) => session?.data,
     },
     session: withItemData(statelessSessions(sessionConfig), {
-      User: 'id',
+      User: 'id name email',
     }),
   })
 );
