@@ -5,12 +5,14 @@ import { styled } from 'styled-components';
 import DisplayError from './ErrorMessage';
 
 const ProductStyles = styled.div`
+  display: grid;
   background: var(--pink);
   grid-auto-columns: 1fr;
   grid-auto-flow: column;
   max-width: var(--maxWidth);
   justify-content: center;
   align-items: top;
+  gap: 2rem;
   img {
     width: 100%;
     object-fit: contain;
@@ -25,6 +27,7 @@ query SINGLE_ITEM_QUERY($id: ID!) {
         description
         id
         photo{
+            id
             altText
             image{
                 publicUrlTransformed

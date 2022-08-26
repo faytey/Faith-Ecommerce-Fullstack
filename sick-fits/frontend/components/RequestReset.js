@@ -5,7 +5,6 @@ import { gql } from 'graphql-tag';
 import { useMutation } from '@apollo/client';
 import Form from './styles/Form';
 import useForm from '../lib/useForm';
-import { CURRENT_USER_QUERY } from './User';
 import Error from './ErrorMessage';
 
 const REQUEST_RESET_MUTATION = gql`
@@ -37,12 +36,13 @@ export default function RequestReset() {
   }
   return (
     <Form method="POST" onSubmit={handleSubmit}>
+      <h2>Password Reset</h2>
+      <Error error={Error} />
       <fieldset>
         {data?.sendUserPasswordResetLink === null && (
           <p>Success! Check Your Email For a Link</p>
         )}
-        <h2>Password Reset</h2>
-        <Error error={Error} />
+
         <label htmlFor="email">
           Email
           <input

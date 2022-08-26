@@ -32,7 +32,7 @@ export default function paginationField() {
     merge(existing, incoming, { args }) {
       const { skip, first } = args;
       console.log(`Merging items from the network ${incoming.length}`);
-      const merged = existing ? existing.slice(8) : [];
+      const merged = existing ? existing.slice(0) : [];
       for (let i = skip; i < skip + incoming.length; ++i) {
         merged[i] = incoming[i - skip];
       }

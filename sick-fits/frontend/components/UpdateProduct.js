@@ -22,7 +22,7 @@ const UPDATE_PRODUCT_MUTATION = gql`
     $description: String
     $price: Int
   ) {
-    updateItem(
+    updateProduct(
       id: $id
       data: { name: $name, description: $description, price: $price }
     ) {
@@ -44,7 +44,14 @@ export default function UpdateProduct({ id }) {
     { data: updateData, error: updateError, loading: updateLoading },
   ] = useMutation(UPDATE_PRODUCT_MUTATION);
 
-  const { inputs, handleChange } = useForm(data?.Product);
+  const { inputs, handleChange } = useForm(
+    data?.Product || {
+      name: '',
+      description: '',
+      price: '',
+    }
+  );
+
   if (loading) return <p>Loading...</p>;
 
   return (

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Supreme = styled.h3`
-  background: var(--red);
+  background: var(--pink);
   color: white;
   display: inline-block;
   padding: 4px 5px;

@@ -15,10 +15,13 @@ function update(cache, payload) {
 }
 
 export default function DeleteProduct({ id, children }) {
-  const [deleteProduct, { loading }] = useMutation(DELETE_PRODUCT_MUTATION, {
-    variables: { id },
-    update,
-  });
+  const [deleteProduct, { loading, error }] = useMutation(
+    DELETE_PRODUCT_MUTATION,
+    {
+      variables: { id },
+      update,
+    }
+  );
   return (
     <button
       type="button"

@@ -35,7 +35,7 @@ const NavStyles = styled.ul`
     }
     &:after {
       height: 2px;
-      background: red;
+      background: pink;
       content: '';
       width: 0;
       position: absolute;
@@ -48,7 +48,7 @@ const NavStyles = styled.ul`
     &:hover,
     &:focus {
       outline: none;
-      text-decoration:none;
+      text-decoration: none;
       &:after {
         width: calc(100% - 60px);
       }

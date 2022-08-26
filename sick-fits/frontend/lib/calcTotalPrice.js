@@ -3,5 +3,5 @@ export default function calcTotalPrice(cart) {
     if (!cartItem.product) return tally;
 
     return tally + cartItem.quantity * cartItem.product.price;
-  });
+  }, 0);
 }

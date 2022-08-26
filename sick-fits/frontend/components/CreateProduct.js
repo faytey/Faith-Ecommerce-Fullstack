@@ -34,9 +34,9 @@ mutation CREATE_PRODUCT_MUTATION(
 export default function CreateProduct() {
   const { inputs, handleChange } = useForm({
     image: '',
-    name: 'Someone Awesome',
-    price: 30000,
-    description: "I'm awesommeee",
+    name: '',
+    price: 0,
+    description: '',
   });
 
   const [createProduct, { loading, data, error }] = useMutation(
@@ -51,7 +51,6 @@ export default function CreateProduct() {
     <Form
       onSubmit={async (e) => {
         e.preventDefault();
-        console.log(inputs);
 
         const res = await createProduct();
         clearForm();
@@ -110,3 +109,4 @@ export default function CreateProduct() {
     </Form>
   );
 }
+export { CREATE_PRODUCT_MUTATION };

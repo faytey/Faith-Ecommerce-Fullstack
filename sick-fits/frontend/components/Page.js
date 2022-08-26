@@ -63,7 +63,6 @@ export default function Page({ children }) {
       <GlobalStyles />
       <Header />
       <InnerStyles>{children}</InnerStyles>
-      <h1>A page component</h1>
     </div>
   );
 }

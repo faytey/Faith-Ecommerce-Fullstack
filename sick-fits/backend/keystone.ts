@@ -6,12 +6,19 @@ import {
   withItemData,
   statelessSessions,
 } from '@keystone-next/keystone/session';
+import { permissionsList } from './schemas/fields';
 import { User } from './schemas/User';
 import { Product } from './schemas/Products';
 import { ProductImage } from './schemas/ProductImage';
 import { CartItem } from './schemas/CartItem';
+import { OrderItem } from './schemas/OrderItem';
+import { Order } from './schemas/Order';
 import { insertSeedData } from './seed-data';
 import { sendPasswordResetEmail } from './lib/mail';
+import { extendGraphqlSchema } from './mutations';
+import { Role } from './schemas/Role';
+
+function check(name: string) {}
 
 const databaseURL =
   process.env.DATABASE_URL || 'mongodb://localhost/keystone-sick-fits-tutorial';
@@ -58,13 +65,17 @@ export default withAuth(
       Product,
       ProductImage,
       CartItem,
+      OrderItem,
+      Order,
+      Role,
     }),
+    extendGraphqlSchema,
     ui: {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-member-access
-      isAccessAllowed: ({ session }) => session?.data,
+      isAccessAllowed: ({ session }) => !!session?.data,
     },
     session: withItemData(statelessSessions(sessionConfig), {
-      User: 'id name email',
+      User: `id name email role { ${permissionsList.join(' ')} }`,
     }),
   })
 );
