@@ -9,10 +9,11 @@ const Logo = styled.h1`
   margin-left: 2rem;
   position: relative;
   z-index: 2;
-  background: #8f0453;
+  border: 0.5rem solid #8f0453;
+  border-radius: 1rem;
   transform: skew(-7deg);
   a {
-    color: white;
+    color: #8f0453;
     text-decoration: none;
     text-transform: uppercase;
     padding: 0.5rem 1rem;

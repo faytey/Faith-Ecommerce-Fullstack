@@ -1,4 +1,5 @@
-import { styled } from 'styled-components';
+/* eslint-disable react/prop-types */
+import styled from 'styled-components';
 import CartStyles from './styles/CartStyles';
 import { useUser } from './User';
 import Supreme from './styles/Supreme';
@@ -9,7 +10,7 @@ import calcTotalPrice from '../lib/calcTotalPrice';
 import RemoveFromCart from './RemoveFromCart';
 import { CheckOut } from './CheckOut';
 
-const CartItemStyles = styled.li`
+const CartItemStyles = styled.div`
   padding: 1rem 0;
   border-bottom: 1px solid var(--lightGrey);
   display: grid;

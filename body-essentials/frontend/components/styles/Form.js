@@ -13,9 +13,10 @@ const loading = keyframes`
 `;
 
 const Form = styled.form`
-  box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.2);
   background: rgba(0, 0, 0, 0.02);
   border: 5px solid white;
+  border-radius: 1.5rem;
   padding: 20px;
   font-size: 1.5rem;
   line-height: 1.5;
@@ -29,8 +30,9 @@ const Form = styled.form`
   select {
     width: 100%;
     padding: 0.5rem;
-    font-size: 1rem;
+    font-size: 1.5rem;
     border: 1px solid black;
+    border-radius: 1.5rem;
     &:focus {
       outline: 0;
       border-color: var(--pink);
@@ -39,11 +41,12 @@ const Form = styled.form`
   button,
   input[type='submit'] {
     width: auto;
-    background: pink;
+    background: var(--pink);
+    border-radius: 2rem;
     color: white;
     border: 0;
     font-size: 2rem;
-    font-weight: 600;
+    font-weight: 400;
     padding: 0.5rem 1.2rem;
   }
   fieldset {
@@ -59,9 +62,9 @@ const Form = styled.form`
       display: block;
       background-image: linear-gradient(
         to right,
-        #ff3019 0%,
-        #e2b04a 50%,
-        #ff3019 100%
+        var(--pink) 0%,
+        #e5e7e6 50%,
+        var(--pink) 100%
       );
     }
     &[aria-busy='true']::before {
